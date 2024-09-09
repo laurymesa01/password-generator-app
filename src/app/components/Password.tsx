@@ -1,9 +1,9 @@
 export default function Password() {
     return (
-        <section>
-            <h2 className="heading-m text-grey">Password Generator</h2>
-            <form className="w-full mx-auto">   
-                <label form="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+        <section className="w-full">
+            <h2 className="heading-m text-grey text-center">Password Generator</h2>
+            <form className="w-full mx-auto mt-8">   
+                <label form="default-search" className="mb-2 text-sm font-medium  sr-only dark:text-white">Search</label>
                 <div className="relative cursor-pointer">
                     <input  type="password" 
                             className="block w-full ps-3 input" 
