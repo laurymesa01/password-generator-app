@@ -28,16 +28,13 @@ body {
 }
 
 .heading-l{
-  @apply font-bold text-[24px] leading-[31px] text-almost-white md:leading-[43px]  md:text-[32px];
+  @apply font-bold text-[24px] leading-[31px]  md:leading-[43px]  md:text-[32px];
 }
 
 .heading-m{
   @apply font-bold text-[16px] md:text-[24px] md:leading-[31px];
 }
 
-.heading-m{
-  @apply font-bold text-[16px]  md:text-[24px] md:leading-[31px];
-}
 
 .p{
   @apply font-bold text-[16px] text-almost-white md:text-[18px] md:leading-[23px];
@@ -47,3 +44,10 @@ body {
   @apply appearance-none py-4 px-4 focus:outline-none bg-dark-grey text-almost-white;
 }
 
+.checkbox{
+  @apply w-5 h-5 appearance-none  relative bg-very-dark-grey text-very-dark-grey border border-almost-white cursor-pointer checked:bg-neon-green;
+}
+
+.button{
+  @apply w-full py-2 text-center bg-neon-green text-dark-grey border hover:border-neon-green hover:bg-dark-grey hover:text-neon-green;
+}
