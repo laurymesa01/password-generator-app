@@ -6,7 +6,7 @@ import Strength from "./Strength";
 
 export default function Details() {
 
-    const [length, setLength] = useState<string>('10');
+    const [length, setLength] = useState<string>('0');
 
     const handleLength = (event: ChangeEvent<HTMLInputElement>) => {
         setLength(event.target.value);
@@ -19,7 +19,7 @@ export default function Details() {
                 <h1 className="heading-l text-neon-green">{length}</h1>
             </div>
             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-            <input onChange={handleLength} id="default-range" type="range" min="0" max="20"  step="1" defaultValue={10} className="w-full h-2 bg-very-dark-grey rounded-lg border-none cursor-pointer accent-neon-green"/>
+            <input onChange={handleLength} id="default-range" type="range" min="0" max="20"  step="1" defaultValue={0} className="w-full h-2 bg-very-dark-grey rounded-lg border-none cursor-pointer accent-neon-green"/>
             <ul className="space-y-2 mt-4">
                 <li>
                     <Checkbox id="1" label="Include Uppercase Letters"/>
