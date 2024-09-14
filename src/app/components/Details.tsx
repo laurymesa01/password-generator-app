@@ -9,11 +9,13 @@ export default function Details() {
 
     const [length, setLength] = useState<string>('0');
 
-    const { strength } = usePasswordContext();
+    const { strength, countCheckedSwitch } = usePasswordContext();
 
     const handleLength = (event: ChangeEvent<HTMLInputElement>) => {
         setLength(event.target.value);
     }
+
+
 
     return (
         <section className="bg-dark-grey w-full mt-6 p-4">
@@ -37,7 +39,7 @@ export default function Details() {
                     <Checkbox id="4" label="Include Symbols"/>
                 </li>
             </ul>
-            <Strength label={strength}/>
+            <Strength label={strength} countCheckedSwitch={countCheckedSwitch}/>
             <button className="button mt-6 flex items-center justify-center">
                 {'Generate'.toUpperCase()}
                 <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" className="ml-2">

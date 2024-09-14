@@ -18,6 +18,7 @@ interface PasswordContextType {
     setStrength: (strength: string) => void,
     changeStrength: any,
     checkboxes: any
+    countCheckedSwitch: any
 }
 
 const PasswordContext = React.createContext<PasswordContextType | undefined>(undefined);
@@ -29,13 +30,7 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
     const [includeLowercaseLetters, setIncludeLowercaseLetters ] = useState<boolean>(false);
     const [includeNumbers, setIncludeNumbers ] = useState<boolean>(false);
     const [includeSymbols, setIncludeSymbols ] = useState<boolean>(false);
-    const [strength, setStrength ] = useState<string>('too weak!');
-    // const [checkboxes, setCheckboxes] = useState<Boolean[]>([
-    //     includeUppercaseLetters, 
-    //     includeLowercaseLetters, 
-    //     includeNumbers, 
-    //     includeSymbols
-    // ]);
+    const [strength, setStrength ] = useState<string>('');
 
     const checkboxes = {
             includeUppercaseLetters: includeUppercaseLetters,
@@ -44,13 +39,17 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             includeSymbols: includeSymbols
     }
 
+    const countCheckedSwitch = () => {
+        return Object.values(checkboxes).filter((isChecked) => isChecked).length;
+    };
+    
     const changeStrength = () => {
-        let counter = 0;
-        Object.entries(checkboxes).forEach(([key, value]) => {
-            if (value) {
-                counter ++;
-            }
-        });
+        let counter = countCheckedSwitch();
+        // Object.entries(checkboxes).forEach(([key, value]) => {
+        //     if (value) {
+        //         counter ++;
+        //     }
+        // });
         switch (counter) {
             case 4:
                 setStrength('strong')
@@ -61,8 +60,11 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             case 2:
                 setStrength('weak')
                 break;
-            default:
+            case 1:
                 setStrength('too weak!')
+                break;
+            default:
+                setStrength('')
                 break;
         }
     }
@@ -82,7 +84,8 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             strength,
             setStrength,
             changeStrength,
-            checkboxes
+            checkboxes,
+            countCheckedSwitch
         }}>
             { children }
         </PasswordContext.Provider>
