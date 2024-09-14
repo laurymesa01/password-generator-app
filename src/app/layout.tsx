@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import PasswordProvider from "./context/Context";
 
 const jetbrains = JetBrains_Mono({ subsets: ["latin"] , weight: ['700']});
 
@@ -16,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={jetbrains.className}>{children}</body>
+      <body className={jetbrains.className}>
+        <PasswordProvider>
+          {children}
+        </PasswordProvider>
+      </body>
     </html>
   );
 }

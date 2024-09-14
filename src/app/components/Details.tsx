@@ -3,10 +3,13 @@
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import Checkbox from "./Checkbox";
 import Strength from "./Strength";
+import { usePasswordContext } from "../context/Context";
 
 export default function Details() {
 
     const [length, setLength] = useState<string>('0');
+
+    const { strength } = usePasswordContext();
 
     const handleLength = (event: ChangeEvent<HTMLInputElement>) => {
         setLength(event.target.value);
@@ -34,7 +37,7 @@ export default function Details() {
                     <Checkbox id="4" label="Include Symbols"/>
                 </li>
             </ul>
-            <Strength label="Medium"/>
+            <Strength label={strength}/>
             <button className="button mt-6 flex items-center justify-center">
                 {'Generate'.toUpperCase()}
                 <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" className="ml-2">
