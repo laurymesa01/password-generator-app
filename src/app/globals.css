@@ -19,6 +19,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  min-width: 320px;
 }
 
 @layer utilities {
@@ -32,7 +33,7 @@ body {
 }
 
 .heading-m{
-  @apply font-bold text-[16px] md:text-[24px] md:leading-[31px];
+  @apply font-bold text-[14px] md:text-[24px] md:leading-[31px];
 }
 
 
@@ -41,7 +42,7 @@ body {
 }
 
 .input{
-  @apply appearance-none py-4 px-4 focus:outline-none bg-dark-grey text-almost-white;
+  @apply appearance-none py-4 px-4 focus:outline-none bg-dark-grey text-almost-white placeholder:text-almost-white placeholder:text-opacity-25;
 }
 
 .checkbox{

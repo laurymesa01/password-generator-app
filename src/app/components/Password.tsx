@@ -17,10 +17,10 @@ export default function Password() {
                 <div className="relative cursor-pointer">
                     <input  type="text" 
                             className="block w-full ps-3 input" 
-                            placeholder="" 
+                            placeholder="P4$5W0rD!" 
                             required 
-                            value={password}
-                            onChange={generatePassword}/>
+                            disabled
+                            value={password}/>
                     {message && <span className="absolute bottom-3.5 end-11 text-neon-green">{'copied'.toUpperCase()}</span> }        
                     <button type="button" 
                             className="absolute end-2.5 bottom-3.5"

@@ -30,7 +30,7 @@ const PasswordContext = React.createContext<PasswordContextType | undefined>(und
 
 export default function PasswordProvider({ children }:{ children: React.ReactNode}) {
 
-    const [password, setPassword ] = useState<string>('PTx1f5DaFX');
+    const [password, setPassword ] = useState<string>('');
     const [includeUppercaseLetters, setIncludeUppercaseLetters ] = useState<boolean>(false);
     const [includeLowercaseLetters, setIncludeLowercaseLetters ] = useState<boolean>(false);
     const [includeNumbers, setIncludeNumbers ] = useState<boolean>(false);

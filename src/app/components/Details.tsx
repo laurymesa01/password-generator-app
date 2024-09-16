@@ -15,13 +15,13 @@ export default function Details() {
     }
 
     return (
-        <section className="bg-dark-grey w-full mt-6 p-4">
+        <section className="bg-dark-grey w-full mt-6 p-2 sm:p-4">
             <div className="flex items-center justify-between">
                 <p className="p text-almost-white">Character Length</p>
                 <h1 className="heading-l text-neon-green">{length}</h1>
             </div>
             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-            <input onChange={handleLength} id="default-range" type="range" min="0" max="20"  step="1" defaultValue={10} className="w-full h-2 bg-very-dark-grey rounded-lg border-none cursor-pointer accent-neon-green"/>
+            <input onChange={handleLength} id="default-range" type="range" min="0" max="20"  step="1" defaultValue={0} className="w-full h-2 bg-very-dark-grey rounded-lg border-none cursor-pointer accent-neon-green"/>
             <ul className="space-y-2 mt-4">
                 <li>
                     <Checkbox id="1" label="Include Uppercase Letters"/>
