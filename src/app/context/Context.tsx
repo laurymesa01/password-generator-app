@@ -22,6 +22,8 @@ interface PasswordContextType {
     generatePassword: any,
     length: number,
     setLength: (length: number) => void,
+    copyToClipboard: any,
+    message: boolean
 }
 
 const PasswordContext = React.createContext<PasswordContextType | undefined>(undefined);
@@ -34,7 +36,8 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
     const [includeNumbers, setIncludeNumbers ] = useState<boolean>(false);
     const [includeSymbols, setIncludeSymbols ] = useState<boolean>(false);
     const [strength, setStrength ] = useState<string>('');
-    const [length, setLength] = useState<number>(10);
+    const [length, setLength] = useState<number>(0);
+    const [message, setMessage] = useState<boolean>(false);
 
     const checkboxes = {
             includeUppercaseLetters: includeUppercaseLetters,
@@ -94,8 +97,19 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             generatedPassword += allChars[randomIndex];
         }
         setPassword(generatedPassword);
-        
+        setMessage(false)
     }
+
+    const copyToClipboard = (): void => {
+        navigator.clipboard.writeText(password).then(
+            () => {
+                setMessage(true);
+            },
+            (err) => {
+                // alert("Failed to copy password to clipboard.");
+            }
+        );
+    };
 
     return (
         <PasswordContext.Provider value={{
@@ -116,7 +130,9 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             changeStrength,
             checkboxes,
             countCheckedSwitch,
-            generatePassword
+            generatePassword,
+            copyToClipboard,
+            message
         }}>
             { children }
         </PasswordContext.Provider>
