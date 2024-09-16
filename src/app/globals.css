@@ -46,7 +46,7 @@ body {
 }
 
 .checkbox{
-  @apply w-5 h-5 appearance-none  relative bg-very-dark-grey text-very-dark-grey border-2 border-almost-white cursor-pointer checked:bg-neon-green checked:border-neon-green hover:border-neon-green;
+  @apply w-5 h-5 appearance-none rounded-sm relative bg-very-dark-grey text-very-dark-grey border-2 border-almost-white cursor-pointer checked:bg-neon-green checked:border-neon-green hover:border-neon-green;
 }
 
 .button{

@@ -1,6 +1,7 @@
 "use client"
 
 import { usePasswordContext } from "../context/Context";
+import '../styles/password.css';
 
 export default function Password() {
     const { password,  
