@@ -1,15 +1,24 @@
+"use client"
+
+import { usePasswordContext } from "../context/Context";
+
 export default function Password() {
+    const { password,  
+            generatePassword } = usePasswordContext();
+
+
     return (
         <section className="w-full">
             <h2 className="heading-m text-grey text-center">Password Generator</h2>
             <form className="w-full mx-auto mt-8">   
                 <label form="default-search" className="mb-2 text-sm font-medium  sr-only dark:text-white">Search</label>
                 <div className="relative cursor-pointer">
-                    <input  type="password" 
+                    <input  type="text" 
                             className="block w-full ps-3 input" 
                             placeholder="" 
                             required 
-                            />
+                            value={password}
+                            onChange={generatePassword}/>
                     <button type="button" 
                             className="absolute end-2.5 bottom-3.5"
                             >

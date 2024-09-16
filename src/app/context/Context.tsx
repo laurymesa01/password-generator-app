@@ -18,19 +18,23 @@ interface PasswordContextType {
     setStrength: (strength: string) => void,
     changeStrength: any,
     checkboxes: any
-    countCheckedSwitch: any
+    countCheckedSwitch: any,
+    generatePassword: any,
+    length: number,
+    setLength: (length: number) => void,
 }
 
 const PasswordContext = React.createContext<PasswordContextType | undefined>(undefined);
 
 export default function PasswordProvider({ children }:{ children: React.ReactNode}) {
 
-    const [password, setPassword ] = useState<string>('');
+    const [password, setPassword ] = useState<string>('PTx1f5DaFX');
     const [includeUppercaseLetters, setIncludeUppercaseLetters ] = useState<boolean>(false);
     const [includeLowercaseLetters, setIncludeLowercaseLetters ] = useState<boolean>(false);
     const [includeNumbers, setIncludeNumbers ] = useState<boolean>(false);
     const [includeSymbols, setIncludeSymbols ] = useState<boolean>(false);
     const [strength, setStrength ] = useState<string>('');
+    const [length, setLength] = useState<number>(10);
 
     const checkboxes = {
             includeUppercaseLetters: includeUppercaseLetters,
@@ -69,6 +73,30 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
         }
     }
 
+    const generatePassword = () => {
+        const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+        const numberChars = "0123456789";
+        const symbolChars = "!@#$%^&*()_+[]{}|;:,.<>?";
+
+        let allChars = "";
+        if (includeUppercaseLetters) allChars += uppercaseChars;
+        if (includeLowercaseLetters) allChars += lowercaseChars;
+        if (includeNumbers) allChars += numberChars;
+        if (includeSymbols) allChars += symbolChars;
+        if (allChars === "") {
+            alert("Please select at least one character type.");
+            return;
+        }
+        let generatedPassword = "";
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * allChars.length);
+            generatedPassword += allChars[randomIndex];
+        }
+        setPassword(generatedPassword);
+        
+    }
+
     return (
         <PasswordContext.Provider value={{
             password,
@@ -83,9 +111,12 @@ export default function PasswordProvider({ children }:{ children: React.ReactNod
             setIncludeSymbols,
             strength,
             setStrength,
+            length,
+            setLength,
             changeStrength,
             checkboxes,
-            countCheckedSwitch
+            countCheckedSwitch,
+            generatePassword
         }}>
             { children }
         </PasswordContext.Provider>
