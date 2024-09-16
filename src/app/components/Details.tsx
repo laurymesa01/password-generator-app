@@ -4,6 +4,7 @@ import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import Checkbox from "./Checkbox";
 import Strength from "./Strength";
 import { usePasswordContext } from "../context/Context";
+import '../styles/details.css';
 
 export default function Details() {
 
