@@ -39,7 +39,7 @@ Users should be able to:
 
 ### Links
 
-<!-- - Solution URL: [Add solution URL here](https://your-solution-url.com) -->
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/password-generator-app-3EQMsNm7za)
 - Live Site URL: [Password Generator App](https://password-generator-app-six-fawn.vercel.app/)
 
 ## My process
